@@ -1,0 +1,63 @@
+# Do not remove this line, otherwise mod_rewrite rules will stop working
+#Para LOCALHOST tuve que activar el rewrite_engine Module en la config de APACHE (en el AMP que se use)
+RewriteBase /
+
+RewriteEngine on
+#Rules for Versioned Static Files
+RewriteRule ^(js|css)/(.+)\.(.+)\.(js|css)$ $1/$2.$4 [L]
+
+
+#Gzip
+#<ifmodule mod_deflate.c>
+#AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript text/javascript
+#</ifmodule>
+
+<FilesMatch "\.js$">
+AddHandler application/x-httpd-php .js
+php_value default_mimetype "text/javascript"
+</FilesMatch>
+<FilesMatch "\.css$">
+AddHandler application/x-httpd-php .css
+php_value default_mimetype "text/css"
+</FilesMatch>
+<FilesMatch "\.(htm|html|shtml)$">
+AddHandler application/x-httpd-php .html
+php_value default_mimetype "text/html"
+</FilesMatch>
+php_value auto_prepend_file /home/a9169867/public_html/gzip.php
+php_value auto_append_file none
+
+#Vary: Accept-Encoding header
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|xml|gz)$">
+    Header append Vary: Accept-Encoding
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_expires.c>
+
+# Enable expirations
+ExpiresActive On
+
+# Default directive
+ExpiresDefault "access plus 1 month"
+
+ExpiresByType image/x-icon "access plus 1 year”
+ExpiresByType image/gif "access plus 1 month"
+ExpiresByType image/png "access plus 1 month"
+ExpiresByType image/jpg "access plus 1 month"
+ExpiresByType image/jpeg "access plus 1 month"
+
+ExpiresByType text/css "access plus 1 year”
+
+ExpiresByType application/javascript "access plus 1 year"
+
+</IfModule>
+
+<filesMatch "\.(js|css)$">
+    Header set Expires "Thu, 21 May 2013 20:00:00 GMT"
+    Header set Last-Modified "Thu, 21 May 2012 20:00:00 GMT"
+</filesMatch>
+
+#Set Content-Type
+AddDefaultCharset utf-8

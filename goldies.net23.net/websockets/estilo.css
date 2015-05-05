@@ -1,0 +1,42 @@
+/*@import url("reset.css");*/
+#mapa {
+	position:relative; 
+	background-color:#ccc;
+	float:left;
+}
+#log {
+	float:left;
+	background-color:red;
+	width:400px;
+	height:200px;
+}
+#log_textarea {
+	resize : none;
+}
+#contenedor_chat{
+	position:relative;
+	float:left;
+	background-color:orange;
+	display:block;
+	width:500px;
+	height:150px;
+}
+#contenedor_chat input{
+
+}
+#chat {
+	resize : none;
+}
+#lista_conectados{
+	float:left;
+	background-color:green;
+	width:100px;
+	height:300px;
+}
+.conectado{
+	background-color:blue;
+	color:white;
+	margin: 2px;
+	width:auto;
+	text-align: center;
+}

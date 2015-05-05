@@ -1,0 +1,10 @@
+
+# DO NOT REMOVE THIS LINE AND THE LINES BELOW PWPROTECTID:GBfVA9
+AuthType Basic
+AuthName "Restricted Access"
+AuthUserFile /home/a9169867/public_html/admins/.htpasswd
+Require user teodoric
+# DO NOT REMOVE THIS LINE AND THE LINES ABOVE GBfVA9:PWPROTECTID
+
+
+
